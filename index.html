@@ -43,6 +43,7 @@
             --bg-surface: #FFFFFF; /* Pure white for cards */
             --text-main: #1A1A1A;
             --text-muted: #666666;
+            --danger-color: #d9534f;
             --radius-lg: 32px;
             --radius-md: 20px;
             --radius-sm: 12px;
@@ -70,7 +71,7 @@
             color: var(--text-main);
             line-height: 1.5;
             overflow-x: hidden;
-            padding-bottom: 80px; /* Space for mobile nav */
+            padding-bottom: 80px; 
         }
 
         a {
@@ -84,7 +85,7 @@
             display: block;
         }
 
-        /* Top Header (Desktop) */
+        /* Top Header */
         .top-bar {
             position: sticky;
             top: 0;
@@ -99,7 +100,6 @@
             align-items: center;
         }
 
-        /* Logo Flex Container */
         .logo {
             font-family: var(--font-display);
             font-size: 1.5rem;
@@ -150,12 +150,12 @@
             width: 100%;
         }
 
-        /* Modern App Buttons */
+        /* Buttons */
         .btn {
             background-color: var(--primary);
             color: #fff;
             padding: 0.8rem 2rem;
-            border-radius: 100px;
+            border-radius: 100px; 
             font-weight: 600;
             font-size: 1rem;
             border: none;
@@ -183,19 +183,17 @@
             background-color: var(--bg-base);
         }
 
-        /* Container Constraint */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 5%;
         }
 
-        /* Section Layouts */
         section {
             padding: 6rem 0;
         }
 
-        /* Hero Section - App Style */
+        /* Hero Section */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -239,7 +237,7 @@
             transform: scale(1);
         }
 
-        /* Horizontal Swipe Product UI */
+        /* Fluid Products Grid (Fixes Zoom Cutoff) */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -253,31 +251,22 @@
             color: var(--primary);
         }
 
-        /* App-like Horizontal Scroll */
-        .swipe-grid {
-            display: flex;
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Forces 3 equal columns */
             gap: 2rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
             padding-bottom: 2rem;
-            scrollbar-width: none;
-        }
-
-        .swipe-grid::-webkit-scrollbar {
-            display: none;
         }
 
         .product-card {
             background: var(--bg-surface);
             border-radius: var(--radius-lg);
             padding: 1.5rem;
-            min-width: 320px;
-            flex: 0 0 320px;
-            scroll-snap-align: start;
             box-shadow: var(--shadow-soft);
             display: flex;
             flex-direction: column;
             transition: var(--transition);
+            position: relative;
         }
 
         .product-card:hover {
@@ -287,7 +276,7 @@
 
         .product-image {
             width: 100%;
-            height: 280px;
+            aspect-ratio: 1/1;
             border-radius: var(--radius-md);
             object-fit: cover;
             margin-bottom: 1.5rem;
@@ -310,6 +299,28 @@
             color: var(--primary);
             font-size: 1.2rem;
             margin-bottom: 1rem;
+        }
+
+        .badge-sale {
+            position: absolute;
+            top: 35px;
+            right: 35px;
+            background-color: var(--danger-color);
+            color: #fff;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(217, 83, 79, 0.3);
+            z-index: 2;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-right: 8px;
         }
 
         .product-desc {
@@ -369,7 +380,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Story/Gallery Section */
+        /* Story Section */
         .story-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -395,7 +406,7 @@
             margin-bottom: 2rem;
         }
 
-        /* App-Style Order Form */
+        /* Advanced Order Form UI */
         .order-section {
             padding: 60px 5%;
         }
@@ -417,7 +428,7 @@
             text-align: center;
         }
 
-        .order-card p {
+        .order-card > p {
             text-align: center;
             color: var(--text-muted);
             margin-bottom: 3rem;
@@ -435,8 +446,8 @@
             color: var(--text-main);
         }
 
-        .app-form input, 
-        .app-form select, 
+        .app-form input[type="text"], 
+        .app-form input[type="email"], 
         .app-form textarea {
             width: 100%;
             padding: 1rem 1.5rem;
@@ -450,7 +461,6 @@
         }
 
         .app-form input:focus, 
-        .app-form select:focus, 
         .app-form textarea:focus {
             border-color: var(--primary);
             background: #fff;
@@ -462,15 +472,79 @@
             min-height: 120px;
         }
 
+        /* Quantity Selectors */
+        .order-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-base);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid #eaeaea;
+            transition: var(--transition);
+        }
+
+        .order-item:hover {
+            border-color: var(--primary);
+        }
+
+        .order-item-info h4 {
+            font-family: var(--font-display);
+            color: var(--text-main);
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .order-item-info p {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .order-item input[type="number"] {
+            width: 80px;
+            text-align: center;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .order-item input[type="number"]:focus {
+            border-color: var(--primary);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
         .btn-full {
             width: 100%;
             padding: 1.2rem;
             font-size: 1.1rem;
-            border-radius: var(--radius-sm);
+            border-radius: 50px;
             margin-top: 1rem;
         }
 
-        /* App Bottom Navigation Bar (Mobile Only) */
+        /* Bottom Nav */
         .bottom-nav {
             display: none;
             position: fixed;
@@ -507,13 +581,13 @@
 
         /* Footer */
         footer {
-            padding: 2rem 5% 4rem;
+            padding: 4rem 5% 2rem;
             text-align: center;
             color: var(--text-muted);
             font-size: 0.9rem;
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 992px) {
             .hero, .story-section {
                 grid-template-columns: 1fr;
@@ -526,6 +600,9 @@
             }
             .story-image {
                 order: -1;
+            }
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             .order-card {
                 padding: 2.5rem 1.5rem;
@@ -548,6 +625,9 @@
             .immersive-banner {
                 margin: 2rem 0;
                 border-radius: 0;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
             }
             .section-header {
                 flex-direction: column;
@@ -594,7 +674,7 @@
                 <a href="shop.html" class="btn btn-secondary">View Shop</a>
             </div>
             
-            <div class="swipe-grid">
+            <div class="products-grid">
                 <div class="product-card">
                     <img src="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/cfae1207-ad6d-4aa7-83ed-911d393cb33e/rose+water.jpg" alt="Rose Water" class="product-image">
                     <div class="product-info">
@@ -606,10 +686,14 @@
                 </div>
 
                 <div class="product-card">
+                    <span class="badge-sale">Sale</span>
                     <img src="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/6cbf4dbf-1b0c-4d0f-9852-722c34a02492/rose+mary+water.JPG" alt="Rosemary Water" class="product-image">
                     <div class="product-info">
                         <h3 class="product-title">Rosemary Water</h3>
-                        <div class="product-price">$19.99</div>
+                        <div class="product-price">
+                            <span class="original-price">$25.99</span> 
+                            $19.99
+                        </div>
                         <p class="product-desc">Rich in essential nutrients to nourish and hydrate. Stimulates hair follicles and improves scalp circulation naturally.</p>
                         <a href="#request-form" class="btn">Order Now</a>
                     </div>
@@ -655,8 +739,8 @@
 
         <section id="request-form" class="order-section">
             <div class="order-card">
-                <h2>Place an Order or Request an Appointment</h2>
-                <p>Select the product or service you're interested in below. We will reach out to you immediately to finalize your order!</p>
+                <h2>Place an Order or Inquiry</h2>
+                <p>Select the quantities of the products you'd like to order, or check the box below if you have a general inquiry or appointment question. We will email you immediately to fulfill your order!</p>
                 
                 <form action="https://formsubmit.co/workorders@hpo.center" method="POST" class="app-form">
                     <input type="hidden" name="_cc" value="support@rosemaryland.love">
@@ -666,30 +750,66 @@
 
                     <div class="form-group">
                         <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Jane Doe">
+                        <input type="text" id="name" name="Name" required placeholder="Jane Doe">
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="jane@example.com">
+                        <input type="email" id="email" name="Email" required placeholder="jane@example.com">
                     </div>
 
                     <div class="form-group">
-                        <label for="interest">What are you interested in?</label>
-                        <select id="interest" name="interest" required>
-                            <option value="Product: Rose Water ($12.99)">Product: Rose Water ($12.99)</option>
-                            <option value="Product: Rosemary Water ($19.99)">Product: Rosemary Water ($19.99)</option>
-                            <option value="Product: Rose Water + Gua Sha ($15.99)">Product: Rose Water + Gua Sha ($15.99)</option>
-                            <option value="Product: Gua Sha ($4.99)">Product: Gua Sha ($4.99)</option>
-                            <option value="Product: Gift Card">Product: Gift Card</option>
-                            <option value="Hair Appointment Question">Hair Appointment Question</option>
-                            <option value="General Inquiry">General Inquiry</option>
-                        </select>
+                        <label>Select Products & Quantities</label>
+                        <div class="order-list">
+                            <div class="order-item">
+                                <div class="order-item-info">
+                                    <h4>Rose Water</h4>
+                                    <p>$12.99</p>
+                                </div>
+                                <input type="number" name="Qty: Rose Water" min="0" placeholder="0">
+                            </div>
+
+                            <div class="order-item">
+                                <div class="order-item-info">
+                                    <h4>Rosemary Water</h4>
+                                    <p><span style="text-decoration: line-through; color: #888; font-size: 0.85rem;">$25.99</span> $19.99</p>
+                                </div>
+                                <input type="number" name="Qty: Rosemary Water" min="0" placeholder="0">
+                            </div>
+
+                            <div class="order-item">
+                                <div class="order-item-info">
+                                    <h4>Rose Water + Gua Sha Bundle</h4>
+                                    <p>$15.99</p>
+                                </div>
+                                <input type="number" name="Qty: Bundle" min="0" placeholder="0">
+                            </div>
+
+                            <div class="order-item">
+                                <div class="order-item-info">
+                                    <h4>Gua Sha Tool</h4>
+                                    <p><span style="text-decoration: line-through; color: #888; font-size: 0.85rem;">$10.99</span> $4.99</p>
+                                </div>
+                                <input type="number" name="Qty: Gua Sha" min="0" placeholder="0">
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Message / Details</label>
-                        <textarea id="message" name="message" required placeholder="Let us know any quantities, questions, or details regarding your order..."></textarea>
+                        <label>Other Inquiries</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="gift-card" name="Interest" value="Gift Card">
+                            <label for="gift-card" style="margin-bottom: 0; font-weight: normal;">I am interested in purchasing a Gift Card.</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="appt-question" name="Interest" value="Appointment/General Question">
+                            <label for="appt-question" style="margin-bottom: 0; font-weight: normal;">I have a question about Hair Appointments or General Info.</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message / Order Details</label>
+                        <textarea id="message" name="Message" placeholder="Let us know any specific gift card amounts, appointment questions, or shipping details here..."></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-full">Submit Request</button>
