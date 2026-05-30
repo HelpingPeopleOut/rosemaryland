@@ -6,12 +6,22 @@
     <title>RoseMaryLand | Natural Botanical Care</title>
     <meta name="description" content="Enhance your beauty with our rosemary water to transform your hair. Our all-natural rose water works wonders on your skin.">
 
+    <meta property="og:title" content="RoseMaryLand | Natural Botanical Care">
+    <meta property="og:description" content="Enhance your beauty with our rosemary water to transform your hair. Our all-natural rose water works wonders on your skin.">
+    <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/880aefe6-06b1-4d27-a63f-83de3c9236fc/Rose+Maryland+Logo.jpg?format=1000w">
+    <meta property="og:url" content="https://rosemaryland.pages.dev/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/880aefe6-06b1-4d27-a63f-83de3c9236fc/Rose+Maryland+Logo.jpg?format=1000w">
+
+    <link rel="icon" type="image/jpeg" href="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/880aefe6-06b1-4d27-a63f-83de3c9236fc/Rose+Maryland+Logo.jpg?format=1000w">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#556B2F">
+    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="RoseMaryLand">
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="apple-touch-icon" href="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/880aefe6-06b1-4d27-a63f-83de3c9236fc/Rose+Maryland+Logo.jpg?format=1000w">
 
     <script>
         if ('serviceWorker' in navigator) {
@@ -89,11 +99,23 @@
             align-items: center;
         }
 
+        /* Logo Flex Container */
         .logo {
             font-family: var(--font-display);
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .desktop-nav {
@@ -106,10 +128,26 @@
             font-weight: 500;
             color: var(--text-muted);
             transition: var(--transition);
+            position: relative;
+        }
+
+        .desktop-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
         }
 
         .desktop-nav a:hover, .desktop-nav a.active {
             color: var(--primary);
+        }
+
+        .desktop-nav a:hover::after, .desktop-nav a.active::after {
+            width: 100%;
         }
 
         /* Modern App Buttons */
@@ -117,7 +155,7 @@
             background-color: var(--primary);
             color: #fff;
             padding: 0.8rem 2rem;
-            border-radius: 100px; /* Pill shape */
+            border-radius: 100px;
             font-weight: 600;
             font-size: 1rem;
             border: none;
@@ -222,11 +260,11 @@
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             padding-bottom: 2rem;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
 
         .swipe-grid::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
+            display: none;
         }
 
         .product-card {
@@ -357,51 +395,79 @@
             margin-bottom: 2rem;
         }
 
-        /* App-Style Newsletter */
-        .newsletter-card {
-            background-color: var(--primary);
+        /* App-Style Order Form */
+        .order-section {
+            padding: 60px 5%;
+        }
+
+        .order-card {
+            background-color: #fff;
             border-radius: var(--radius-lg);
-            padding: 5rem 2rem;
-            text-align: center;
-            color: #fff;
+            padding: 4rem;
             box-shadow: var(--shadow-soft);
-        }
-
-        .newsletter-card h2 {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .newsletter-card p {
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 2.5rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .input-group {
-            display: flex;
-            background: #fff;
-            padding: 0.5rem;
-            border-radius: 100px;
-            max-width: 450px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .input-group input {
-            border: none;
-            padding: 0.8rem 1.5rem;
-            flex-grow: 1;
-            border-radius: 50px;
-            outline: none;
-            font-family: var(--font-ui);
-            font-size: 1rem;
+        .order-card h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-align: center;
         }
 
-        .input-group button {
-            margin-left: 0.5rem;
+        .order-card p {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .app-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .app-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .app-form input, 
+        .app-form select, 
+        .app-form textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid #ddd;
+            font-family: var(--font-ui);
+            font-size: 1rem;
+            background: var(--bg-base);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .app-form input:focus, 
+        .app-form select:focus, 
+        .app-form textarea:focus {
+            border-color: var(--primary);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(85, 107, 47, 0.1);
+        }
+
+        .app-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-full {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            border-radius: var(--radius-sm);
+            margin-top: 1rem;
         }
 
         /* App Bottom Navigation Bar (Mobile Only) */
@@ -441,7 +507,7 @@
 
         /* Footer */
         footer {
-            padding: 4rem 5% 2rem;
+            padding: 2rem 5% 4rem;
             text-align: center;
             color: var(--text-muted);
             font-size: 0.9rem;
@@ -461,20 +527,23 @@
             .story-image {
                 order: -1;
             }
+            .order-card {
+                padding: 2.5rem 1.5rem;
+            }
         }
 
         @media (max-width: 768px) {
             body {
-                padding-bottom: 90px; /* Space for bottom nav */
+                padding-bottom: 90px;
             }
             .desktop-nav {
-                display: none; /* Hide top nav on mobile */
+                display: none;
             }
             .bottom-nav {
-                display: flex; /* Show bottom nav on mobile */
+                display: flex;
             }
             .top-bar .btn {
-                display: none; /* Hide header button to keep it clean */
+                display: none;
             }
             .immersive-banner {
                 margin: 2rem 0;
@@ -485,33 +554,23 @@
                 align-items: flex-start;
                 gap: 1rem;
             }
-            .input-group {
-                flex-direction: column;
-                background: transparent;
-                padding: 0;
-            }
-            .input-group input {
-                margin-bottom: 1rem;
-                padding: 1rem 1.5rem;
-            }
-            .input-group button {
-                margin-left: 0;
-                width: 100%;
-            }
         }
     </style>
 </head>
 <body>
 
     <header class="top-bar">
-        <a href="index.html" class="logo">RoseMaryLand</a>
+        <a href="index.html" class="logo">
+            <img src="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/880aefe6-06b1-4d27-a63f-83de3c9236fc/Rose+Maryland+Logo.jpg?format=1000w" alt="RoseMaryLand Logo">
+            RoseMaryLand
+        </a>
         <nav class="desktop-nav">
             <a href="index.html" class="active">Home</a>
             <a href="shop.html">Shop</a>
             <a href="appointments.html">Haircare</a>
             <a href="about.html">About</a>
         </nav>
-        <a href="shop.html" class="btn">Shop Now</a>
+        <a href="#request-form" class="btn">Order Now</a>
     </header>
 
     <main>
@@ -519,8 +578,8 @@
             <div class="hero-text">
                 <h1>Unlock the Magic of Botanicals.</h1>
                 <p>Enhance your beauty with our pure rosemary water to transform your hair into its healthiest state, and revitalize your skin with our all-natural rose water formulations.</p>
-                <a href="shop.html" class="btn">
-                    Explore Collection
+                <a href="#request-form" class="btn">
+                    Place an Order
                     <span style="font-size: 1.2rem;">→</span>
                 </a>
             </div>
@@ -532,7 +591,7 @@
         <section class="container">
             <div class="section-header">
                 <h2>Our Natural Remedies</h2>
-                <a href="shop.html" class="btn btn-secondary">View All</a>
+                <a href="shop.html" class="btn btn-secondary">View Shop</a>
             </div>
             
             <div class="swipe-grid">
@@ -542,7 +601,7 @@
                         <h3 class="product-title">Revitalize Your Skin</h3>
                         <div class="product-price">$12.99</div>
                         <p class="product-desc">Pure rose water elixir. Helps cleanse, hydrate, and refresh your skin, eliminating blackheads and tightening pores.</p>
-                        <a href="shop.html" class="btn">Order Now</a>
+                        <a href="#request-form" class="btn">Order Now</a>
                     </div>
                 </div>
 
@@ -552,7 +611,7 @@
                         <h3 class="product-title">Rosemary Water</h3>
                         <div class="product-price">$19.99</div>
                         <p class="product-desc">Rich in essential nutrients to nourish and hydrate. Stimulates hair follicles and improves scalp circulation naturally.</p>
-                        <a href="shop.html" class="btn">Order Now</a>
+                        <a href="#request-form" class="btn">Order Now</a>
                     </div>
                 </div>
 
@@ -562,7 +621,7 @@
                         <h3 class="product-title">Gift Cards</h3>
                         <div class="product-price">$25 - $100</div>
                         <p class="product-desc">Give the gift of natural beauty and wellness. Treat your loved ones to the rejuvenating benefits of our botanical remedies.</p>
-                        <a href="shop.html" class="btn">Order Now</a>
+                        <a href="#request-form" class="btn">Order Now</a>
                     </div>
                 </div>
             </div>
@@ -594,17 +653,46 @@
             </div>
         </section>
 
-        <section class="container" style="padding-top: 2rem;">
-            <div class="newsletter-card">
-                <h2>Join the List</h2>
-                <p>Subscribe to receive news, exclusive updates, and early access to drops like our upcoming lavender shampoo!</p>
-                <form action="https://formsubmit.co/workorders@hpo.center" method="POST">
+        <section id="request-form" class="order-section">
+            <div class="order-card">
+                <h2>Place an Order or Request an Appointment</h2>
+                <p>Select the product or service you're interested in below. We will reach out to you immediately to finalize your order!</p>
+                
+                <form action="https://formsubmit.co/workorders@hpo.center" method="POST" class="app-form">
                     <input type="hidden" name="_cc" value="support@rosemaryland.love">
                     <input type="hidden" name="_captcha" value="false">
-                    <div class="input-group">
-                        <input type="email" name="email" placeholder="Enter your email address" required>
-                        <button type="submit" class="btn">Subscribe</button>
+                    <input type="hidden" name="_subject" value="New Website Order/Inquiry!">
+                    <input type="hidden" name="_next" value="https://rosemaryland.pages.dev/">
+
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Jane Doe">
                     </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="jane@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interest">What are you interested in?</label>
+                        <select id="interest" name="interest" required>
+                            <option value="Product: Rose Water ($12.99)">Product: Rose Water ($12.99)</option>
+                            <option value="Product: Rosemary Water ($19.99)">Product: Rosemary Water ($19.99)</option>
+                            <option value="Product: Rose Water + Gua Sha ($15.99)">Product: Rose Water + Gua Sha ($15.99)</option>
+                            <option value="Product: Gua Sha ($4.99)">Product: Gua Sha ($4.99)</option>
+                            <option value="Product: Gift Card">Product: Gift Card</option>
+                            <option value="Hair Appointment Question">Hair Appointment Question</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message / Details</label>
+                        <textarea id="message" name="message" required placeholder="Let us know any quantities, questions, or details regarding your order..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-full">Submit Request</button>
                 </form>
             </div>
         </section>

@@ -7,15 +7,9 @@
   "theme_color": "#556B2F",
   "icons": [
     {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src": "https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/880aefe6-06b1-4d27-a63f-83de3c9236fc/Rose+Maryland+Logo.jpg?format=1000w",
+      "sizes": "1000x1000",
+      "type": "image/jpeg",
       "purpose": "any maskable"
     }
   ]
