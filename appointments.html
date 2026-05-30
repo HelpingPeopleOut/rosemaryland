@@ -6,12 +6,22 @@
     <title>Haircare Appointments | RoseMaryLand</title>
     <meta name="description" content="Professional Hair Stylist in Pasadena and Victorville California. Haircuts are essential for maintaining healthy hair, trimming split ends, and promoting overall hair health.">
 
+    <meta property="og:title" content="Haircare Appointments | RoseMaryLand">
+    <meta property="og:description" content="Professional Hair Stylist in Pasadena and Victorville California. Book your hair transformation today.">
+    <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/880aefe6-06b1-4d27-a63f-83de3c9236fc/Rose+Maryland+Logo.jpg?format=1000w">
+    <meta property="og:url" content="https://rosemaryland.pages.dev/appointments.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/880aefe6-06b1-4d27-a63f-83de3c9236fc/Rose+Maryland+Logo.jpg?format=1000w">
+
+    <link rel="icon" type="image/jpeg" href="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/880aefe6-06b1-4d27-a63f-83de3c9236fc/Rose+Maryland+Logo.jpg?format=1000w">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#556B2F">
+    <meta name="theme-color" content="#D1C4E9">
+    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="RoseMaryLand">
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="apple-touch-icon" href="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/880aefe6-06b1-4d27-a63f-83de3c9236fc/Rose+Maryland+Logo.jpg?format=1000w">
 
     <script>
         if ('serviceWorker' in navigator) {
@@ -24,12 +34,13 @@
     </script>
 
     <style>
-        /* Modern App-Style Variables */
+        /* Modern App-Style Variables (Lavender Theme) */
         :root {
             --primary: #2c3e1e; /* Deep, luxurious rosemary green */
             --primary-hover: #1f2c15;
-            --accent: #E6C6CB; /* Soft rose pink */
-            --bg-base: #F9F8F6; /* Warm, app-like off-white */
+            --accent: #D1C4E9; /* Light lavender */
+            --accent-glow: rgba(209, 196, 233, 0.4);
+            --bg-base: #FDFBFC; /* Warm, bright app-like off-white */
             --bg-surface: #FFFFFF; /* Pure white for cards */
             --text-main: #1A1A1A;
             --text-muted: #666666;
@@ -37,7 +48,7 @@
             --radius-md: 20px;
             --radius-sm: 12px;
             --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.04);
-            --shadow-hover: 0 24px 60px rgba(44, 62, 30, 0.12);
+            --shadow-hover: 0 24px 60px rgba(209, 196, 233, 0.4);
             --font-display: 'Georgia', serif;
             --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             --transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -61,7 +72,23 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-bottom: 80px; /* Space for mobile nav */
+            padding-bottom: 80px;
+            position: relative;
+        }
+
+        /* Subtle Ambient Lavender Background Gradient */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(209, 196, 233, 0.35), transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(209, 196, 233, 0.25), transparent 50%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         a {
@@ -87,10 +114,10 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(249, 248, 246, 0.8);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(209, 196, 233, 0.4);
             padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
@@ -102,6 +129,17 @@
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .desktop-nav {
@@ -114,10 +152,26 @@
             font-weight: 500;
             color: var(--text-muted);
             transition: var(--transition);
+            position: relative;
+        }
+
+        .desktop-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
         }
 
         .desktop-nav a:hover, .desktop-nav a.active {
             color: var(--primary);
+        }
+
+        .desktop-nav a:hover::after, .desktop-nav a.active::after {
+            width: 100%;
         }
 
         /* Modern App Buttons */
@@ -141,13 +195,13 @@
         .btn:hover {
             background-color: var(--primary-hover);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
+            box-shadow: 0 8px 20px rgba(44, 62, 30, 0.2);
         }
 
         /* Page Header */
         .page-header {
             text-align: center;
-            padding: 4rem 0 2rem;
+            padding: 5rem 0 3rem;
         }
 
         .page-header h1 {
@@ -159,7 +213,7 @@
         }
 
         .page-header p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--text-muted);
             max-width: 700px;
             margin: 0 auto;
@@ -176,11 +230,18 @@
             align-items: center;
             padding: 2.5rem;
             margin-bottom: 4rem;
+            border: 1px solid rgba(209, 196, 233, 0.2);
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            box-shadow: var(--shadow-hover);
         }
 
         .info-image {
             border-radius: var(--radius-md);
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(209, 196, 233, 0.3);
         }
 
         .info-image img {
@@ -219,6 +280,7 @@
             box-shadow: var(--shadow-soft);
             text-align: center;
             margin-bottom: 4rem;
+            border-top: 6px solid var(--accent);
         }
 
         .booking-widget h2 {
@@ -239,7 +301,7 @@
         .iframe-container {
             border-radius: var(--radius-md);
             overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(209, 196, 233, 0.3);
             background: #fafafa;
         }
 
@@ -253,11 +315,11 @@
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(0,0,0,0.05);
+            border-top: 1px solid rgba(209, 196, 233, 0.4);
             padding: 0.8rem 1rem calc(0.8rem + env(safe-area-inset-bottom));
             z-index: 2000;
             justify-content: space-around;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 -10px 30px rgba(209, 196, 233, 0.15);
         }
 
         .nav-item {
@@ -280,7 +342,7 @@
 
         /* Footer */
         footer {
-            padding: 2rem 5% 2rem;
+            padding: 2rem 5% 4rem;
             text-align: center;
             color: var(--text-muted);
             font-size: 0.9rem;
@@ -306,11 +368,14 @@
             .bottom-nav {
                 display: flex;
             }
+            .page-header {
+                padding-top: 3rem;
+            }
             .page-header h1 {
                 font-size: 2.2rem;
             }
             .booking-widget {
-                padding: 2rem 1.5rem;
+                padding: 2.5rem 1.5rem;
             }
         }
     </style>
@@ -318,7 +383,10 @@
 <body>
 
     <header class="top-bar">
-        <a href="index.html" class="logo">RoseMaryLand</a>
+        <a href="index.html" class="logo">
+            <img src="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/880aefe6-06b1-4d27-a63f-83de3c9236fc/Rose+Maryland+Logo.jpg?format=1000w" alt="RoseMaryLand Logo">
+            RoseMaryLand
+        </a>
         <nav class="desktop-nav">
             <a href="index.html">Home</a>
             <a href="shop.html">Shop</a>
