@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RoseMaryLand | Natural Rosemary & Rose Water</title>
-    <meta name="description" content="Enhance your beauty with our rosemary water to transform your hair. Our all-natural rose water works wonders on your skin.">
+    <meta name="description" content="Enhance your beauty with our rosemary water to transform your hair into its healthiest state - regrow, repair, and revitalize.">
     <style>
-        /* CSS Variables for a Premium Earthy Palette */
+        /* Modern Premium CSS Variables */
         :root {
             --primary-color: #556B2F; /* Rosemary Green */
+            --primary-dark: #3e4f22;
             --secondary-color: #E6C6CB; /* Rose Pink */
-            --text-dark: #333333;
-            --text-light: #F7F5F0; /* Off-white background */
+            --secondary-light: #f9eef0;
+            --text-dark: #2c3e50;
+            --text-light: #F7F5F0;
             --font-heading: 'Georgia', serif;
             --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* Reset & Base Styles */
+        /* Reset & Base Setup */
         * {
             margin: 0;
             padding: 0;
@@ -32,6 +35,7 @@
             color: var(--text-dark);
             background-color: var(--text-light);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         a {
@@ -39,14 +43,21 @@
             color: inherit;
         }
 
-        /* Navigation */
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Glassmorphism Sticky Header */
         header {
-            background-color: #fff;
-            padding: 1.5rem 5%;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 1.2rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -54,214 +65,329 @@
 
         .logo {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: bold;
             color: var(--primary-color);
+            letter-spacing: 0.5px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         nav a {
             font-weight: 500;
-            transition: color 0.3s ease;
+            font-size: 0.95rem;
+            color: #555;
+            transition: var(--transition-smooth);
+            position: relative;
         }
 
-        nav a:hover {
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition-smooth);
+        }
+
+        nav a:hover, nav a.active {
             color: var(--primary-color);
         }
 
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        /* Modern Buttons */
         .btn {
             background-color: var(--primary-color);
             color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 30px;
-            font-weight: bold;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
             border: none;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: var(--transition-smooth);
             display: inline-block;
             font-size: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(85, 107, 47, 0.2);
         }
 
         .btn:hover {
-            background-color: #3e4f22;
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(85, 107, 47, 0.3);
         }
 
-        /* Hero Section */
+        /* 1. Hero Section */
         .hero {
-            text-align: center;
-            padding: 100px 5%;
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--text-light) 100%);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            min-height: 85vh;
+            padding: 4rem 5%;
+            background: linear-gradient(135deg, #fff 0%, var(--secondary-light) 100%);
+            gap: 4rem;
         }
 
-        .hero h1 {
+        .hero-content h1 {
             font-family: var(--font-heading);
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
             margin-bottom: 1.5rem;
             color: var(--primary-color);
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem auto;
+        .hero-content p {
+            font-size: 1.15rem;
+            color: #555;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
         }
 
-        /* Products Grid */
-        .products {
-            padding: 80px 5%;
+        .hero-image img {
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            object-fit: cover;
+            width: 100%;
+            aspect-ratio: 4/5;
+        }
+
+        /* 2. Highlighted Products List (Replaces Squarespace List Section) */
+        .product-highlights {
+            padding: 100px 5%;
+            background-color: #fff;
             text-align: center;
         }
 
-        .products h2 {
+        .product-highlights h2 {
             font-family: var(--font-heading);
             font-size: 2.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
+            text-decoration: underline;
+            text-underline-offset: 8px;
+            color: var(--text-dark);
         }
 
-        .grid {
+        .highlight-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+        .highlight-card {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            align-items: center;
+            text-align: center;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        .highlight-card img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: var(--transition-smooth);
         }
 
-        .card h3 {
+        .highlight-card:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .highlight-card h3 {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card .price {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 1.25rem;
+            font-size: 1.6rem;
             margin-bottom: 1rem;
         }
 
-        .card p {
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
+        .highlight-card p {
             color: #666;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
-        /* Booking Section */
-        .booking {
-            background-color: #fff;
-            padding: 80px 5%;
+        /* 3. Parallax Banner Section */
+        .parallax-banner {
+            position: relative;
+            background-image: url('https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/c6a5a4f6-4f65-478c-bc2e-60d73d197623/rosemaryland+bottle+edit.JPG');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Creates the premium parallax effect */
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            color: #fff;
         }
 
-        .booking h2 {
+        .parallax-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        .parallax-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 5%;
+        }
+
+        .parallax-content h2 {
             font-family: var(--font-heading);
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
         }
 
-        .iframe-container {
-            max-width: 1000px;
+        /* 4. Discover Gallery Section */
+        .gallery-section {
+            padding: 100px 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .gallery-content h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .gallery-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-image img {
             border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
-        /* Contact & Request Form */
-        .contact-section {
+        /* 5. Newsletter Section */
+        .newsletter {
             padding: 80px 5%;
-            background-color: var(--text-light);
+            background-color: var(--secondary-light);
             text-align: center;
+            border-top: 1px solid #eaeaea;
         }
 
-        .contact-section h2 {
+        .newsletter h2 {
             font-family: var(--font-heading);
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: var(--primary-color);
         }
 
-        .contact-section p {
-            margin-bottom: 2rem;
-        }
-
-        .form-container {
+        .newsletter p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
             max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #555;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 500px;
             margin: 0 auto;
-            background: #fff;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            text-align: left;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        .form-group input, 
-        .form-group select, 
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
             border: 1px solid #ccc;
-            border-radius: 6px;
             font-family: var(--font-body);
             font-size: 1rem;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-container .btn {
-            width: 100%;
+            outline: none;
         }
 
         /* Footer */
         footer {
             background-color: var(--text-dark);
+            color: #aaa;
+            padding: 60px 5% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
             color: #fff;
-            padding: 40px 5%;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
             text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
         }
 
-        footer p {
-            margin-bottom: 10px;
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero, .gallery-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content p, .gallery-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .gallery-image {
+                order: -1; /* Puts image above text on mobile */
+            }
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
             }
-            .hero h1 {
-                font-size: 2rem;
+            .newsletter-form {
+                flex-direction: column;
             }
         }
     </style>
@@ -272,107 +398,112 @@
         <div class="logo">RoseMaryLand</div>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#shop">Shop</a></li>
-                <li><a href="#haircare">Haircare</a></li>
-                <li><a href="#request-form">Contact</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="appointments.html">Haircare</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
         </nav>
-        <a href="#request-form" class="btn">Order Now</a>
+        <a href="shop.html" class="btn">Shop Now</a>
     </header>
 
     <main>
-        <section id="home" class="hero">
-            <h1>Discover the magic of Rosemary & Rose Water</h1>
-            <p>Enhance your beauty with our rosemary water to transform your hair into its healthiest state — regrow, repair, and revitalize. Our all-natural rose water can work wonders on your skin, eliminating blackheads and tightening pores.</p>
-            <a href="#shop" class="btn">Shop the Collection</a>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Discover the magic of our Rosemary and Rose Water</h1>
+                <p>Enhance your beauty with our rosemary water to transform your hair into its healthiest state - regrow, repair, and revitalize. Our all-natural rose water works wonders on your skin, eliminating blackheads and tightening pores.</p>
+                <a href="shop.html" class="btn">Shop the Collection</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/1712014778443-IKG4I8127RIBT88MUQ74/image-asset.jpeg" alt="Botanical Rosemary and Rose Water">
+            </div>
         </section>
 
-        <section id="shop" class="products">
-            <h2>Our Natural Remedies</h2>
-            <div class="grid">
-                <div class="card">
-                    <div>
-                        <h3>Revitalize Your Skin</h3>
-                        <div class="price">$12.99</div>
-                        <p>Indulge in the soothing and rejuvenating benefits of our pure rose water. Made from the finest rose petals, it helps cleanse, hydrate, and refresh your skin, leaving it soft and radiant.</p>
-                    </div>
-                    <a href="#request-form" class="btn">Request Order</a>
-                </div>
+        <section class="product-highlights">
+            <h2>RoseMaryLand</h2>
+            <div class="highlight-grid">
                 
-                <div class="card">
-                    <div>
-                        <h3>Rosemary Water</h3>
-                        <div class="price">$19.99</div>
-                        <p>Elevate your hair care routine! Rich in essential nutrients and antioxidants, it promotes healthy hair growth and scalp wellness. Perfect for all hair types.</p>
-                    </div>
-                    <a href="#request-form" class="btn">Request Order</a>
+                <div class="highlight-card">
+                    <img src="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/cfae1207-ad6d-4aa7-83ed-911d393cb33e/rose+water.jpg" alt="Rose Water">
+                    <h3>Revitalize your skin</h3>
+                    <p><strong>$12.99</strong><br>Indulge in the soothing and rejuvenating benefits of our pure rose water! Made from the finest rose petals, it helps cleanse, hydrate, and refresh your skin, leaving it soft, supple, and radiant.</p>
+                    <a href="shop.html" class="btn">Place Order</a>
                 </div>
 
-                <div class="card">
-                    <div>
-                        <h3>Gift Cards</h3>
-                        <div class="price">$25 - $100</div>
-                        <p>Give the gift of natural beauty and wellness! Treat your loved ones to the rejuvenating benefits of rosemary water for hair and rose water for skin.</p>
-                    </div>
-                    <a href="#request-form" class="btn">Request Order</a>
+                <div class="highlight-card">
+                    <img src="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/6cbf4dbf-1b0c-4d0f-9852-722c34a02492/rose+mary+water.JPG" alt="Rosemary Water">
+                    <h3>Rosemary Water</h3>
+                    <p><strong>$19.99</strong><br>Nourish and Hydrates Hair. Elevate your hair care routine with our premium rosemary water! Rich in essential nutrients and antioxidants that promote healthy hair growth and scalp wellness.</p>
+                    <a href="shop.html" class="btn">Place Order</a>
                 </div>
+
+                <div class="highlight-card">
+                    <img src="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/6a615853-3fd9-49f1-8bdc-fa360c5ece95/image-asset.jpg" alt="Gift Cards">
+                    <h3>Gift Cards</h3>
+                    <p><strong>$25, $50, $75, $100</strong><br>Give the gift of natural beauty and wellness! Treat your loved ones to the rejuvenating benefits of rosemary water for hair and rose water for skin.</p>
+                    <a href="shop.html" class="btn">Place Order</a>
+                </div>
+
             </div>
         </section>
 
-        <section id="haircare" class="booking">
-            <h2>Schedule a Hair Style Appointment</h2>
-            <p style="margin-bottom: 2rem;">Welcome to our professional hair care haven, where growth begins anew. Let us guide you through the transformation journey.</p>
-            <div class="iframe-container">
-                <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1AFrLr7oASDMv2aOvfpd4F4BweMb_lx2UmyNUZ7fhG7_rTm8fgkPH6gMAmY5aD12jdnEfS2TL3?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+        <section class="parallax-banner">
+            <div class="parallax-overlay"></div>
+            <div class="parallax-content">
+                <h2>Welcome to our professional hair care haven, where growth begins anew.</h2>
+                <p style="font-size: 1.2rem;">Let us guide you through the transformation journey with Rose MaryLand.</p>
             </div>
         </section>
 
-        <section id="request-form" class="contact-section">
-            <h2>Place an Order or Contact Us</h2>
-            <p>Fill out the form below to request a product or ask a question. We will reach out to you shortly to finalize your request!</p>
-            
-            <div class="form-container">
-                <form action="https://formsubmit.co/workorders@hpo.center" method="POST">
-                    
-                    <input type="hidden" name="_cc" value="support@rosemaryland.love">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://pufferfish-salamander-mzmh.squarespace.com/"> 
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Jane Doe">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="jane@example.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="interest">What are you interested in?</label>
-                        <select id="interest" name="interest" required>
-                            <option value="General Inquiry">General Inquiry</option>
-                            <option value="Product: Rose Water ($12.99)">Product: Rose Water ($12.99)</option>
-                            <option value="Product: Rosemary Water ($19.99)">Product: Rosemary Water ($19.99)</option>
-                            <option value="Product: Gift Card">Product: Gift Card</option>
-                            <option value="Hair Appointment Question">Hair Appointment Question</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message / Order Details</label>
-                        <textarea id="message" name="message" required placeholder="Let us know quantities or any questions you have..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn">Submit Request</button>
-                </form>
+        <section class="gallery-section">
+            <div class="gallery-content">
+                <h2>Discover hair revival</h2>
+                <p>Enhance your beauty with our rosemary products. Transform your hair into its healthiest state - regrow, repair, and revitalize. Experience the rejuvenating properties of rosemary and roses as they work together to promote healthy hair growth, while also enhancing the radiance and vitality of your skin.</p>
+                <a href="https://instagram.com/sara.lyn2.0" target="_blank" class="btn btn-outline">View Instagram Gallery</a>
             </div>
+            <div class="gallery-image">
+                <img src="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/1712706723470-LMDYO3VD8AA3BWSA7Y0A/image-asset.jpeg" alt="Natural Hair and Skin Botanicals">
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <h2>Subscribe</h2>
+            <p>Sign up with your email address to receive news and updates on products such as our up and coming lavender shampoo!</p>
+            <form class="newsletter-form" action="https://formsubmit.co/workorders@hpo.center" method="POST">
+                <input type="hidden" name="_cc" value="support@rosemaryland.love">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="New Newsletter Subscriber!">
+                <input type="email" name="email" placeholder="Email Address" required>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 RoseMaryLand.Love. All rights reserved.</p>
-        <p>Created by HPO.Center | support@rosemaryland.love</p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>RoseMaryLand.love</h4>
+                <p>Natural hair and skincare solutions crafted with the finest botanical ingredients.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="appointments.html">Appointments</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>support@rosemaryland.love</li>
+                    <li><a href="https://instagram.com/sara.lyn2.0" target="_blank">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RoseMaryLand.Love. All rights reserved. Created by <a href="https://www.hpo.center" target="_blank" style="color: var(--secondary-color);">HPO.Center</a></p>
+        </div>
     </footer>
 
 </body>
