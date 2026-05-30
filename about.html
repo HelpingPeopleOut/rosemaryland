@@ -44,6 +44,7 @@
             --bg-surface: #FFFFFF; /* Pure white for cards */
             --text-main: #1A1A1A;
             --text-muted: #666666;
+            --danger-color: #d9534f;
             --radius-lg: 32px;
             --radius-md: 20px;
             --radius-sm: 12px;
@@ -54,7 +55,6 @@
             --transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -72,11 +72,11 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-bottom: 80px; /* Space for mobile nav */
+            padding-bottom: 80px; 
             position: relative;
         }
 
-        /* Subtle Ambient Lavender Background Gradient */
+        /* Ambient Lavender Glow */
         body::before {
             content: '';
             position: fixed;
@@ -102,14 +102,13 @@
             display: block;
         }
 
-        /* Container Constraint */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 5%;
         }
 
-        /* Top Header (Desktop) */
+        /* Top Header */
         .top-bar {
             position: sticky;
             top: 0;
@@ -174,7 +173,6 @@
             width: 100%;
         }
 
-        /* Modern App Buttons */
         .btn {
             background-color: var(--primary);
             color: #fff;
@@ -273,7 +271,7 @@
             line-height: 1.7;
         }
 
-        /* App-Style Newsletter */
+        /* Newsletter Card */
         .newsletter-card {
             background-color: var(--primary);
             border-radius: var(--radius-lg);
@@ -325,10 +323,10 @@
         }
         
         .input-group button:hover {
-            background-color: #BEAED1; /* Darker lavender on hover */
+            background-color: #BEAED1;
         }
 
-        /* App Bottom Navigation Bar (Mobile Only) */
+        /* Bottom Nav */
         .bottom-nav {
             display: none;
             position: fixed;
@@ -457,6 +455,7 @@
             <form action="https://formsubmit.co/workorders@hpo.center" method="POST">
                 <input type="hidden" name="_cc" value="support@rosemaryland.love">
                 <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://rosemaryland.pages.dev/thankyou.html">
                 <div class="input-group">
                     <input type="email" name="email" placeholder="Enter your email address" required>
                     <button type="submit" class="btn">Subscribe</button>
