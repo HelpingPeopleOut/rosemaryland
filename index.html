@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoseMaryLand | Natural Rosemary & Rose Water</title>
+    <meta name="description" content="Enhance your beauty with our rosemary water to transform your hair. Our all-natural rose water works wonders on your skin.">
+    <style>
+        /* CSS Variables for a Premium Earthy Palette */
+        :root {
+            --primary-color: #556B2F; /* Rosemary Green */
+            --secondary-color: #E6C6CB; /* Rose Pink */
+            --text-dark: #333333;
+            --text-light: #F7F5F0; /* Off-white background */
+            --font-heading: 'Georgia', serif;
+            --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation */
+        header {
+            background-color: #fff;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #3e4f22;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 5%;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--text-light) 100%);
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+
+        /* Products Grid */
+        .products {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .products h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .price {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        /* Booking Section */
+        .booking {
+            background-color: #fff;
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .booking h2 {
+            font-family: var(--font-heading);
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .iframe-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Contact & Request Form */
+        .contact-section {
+            padding: 80px 5%;
+            background-color: var(--text-light);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            margin-bottom: 2rem;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-container .btn {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: #fff;
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">RoseMaryLand</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#haircare">Haircare</a></li>
+                <li><a href="#request-form">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="#request-form" class="btn">Order Now</a>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>Discover the magic of Rosemary & Rose Water</h1>
+            <p>Enhance your beauty with our rosemary water to transform your hair into its healthiest state — regrow, repair, and revitalize. Our all-natural rose water can work wonders on your skin, eliminating blackheads and tightening pores.</p>
+            <a href="#shop" class="btn">Shop the Collection</a>
+        </section>
+
+        <section id="shop" class="products">
+            <h2>Our Natural Remedies</h2>
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <h3>Revitalize Your Skin</h3>
+                        <div class="price">$12.99</div>
+                        <p>Indulge in the soothing and rejuvenating benefits of our pure rose water. Made from the finest rose petals, it helps cleanse, hydrate, and refresh your skin, leaving it soft and radiant.</p>
+                    </div>
+                    <a href="#request-form" class="btn">Request Order</a>
+                </div>
+                
+                <div class="card">
+                    <div>
+                        <h3>Rosemary Water</h3>
+                        <div class="price">$19.99</div>
+                        <p>Elevate your hair care routine! Rich in essential nutrients and antioxidants, it promotes healthy hair growth and scalp wellness. Perfect for all hair types.</p>
+                    </div>
+                    <a href="#request-form" class="btn">Request Order</a>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <h3>Gift Cards</h3>
+                        <div class="price">$25 - $100</div>
+                        <p>Give the gift of natural beauty and wellness! Treat your loved ones to the rejuvenating benefits of rosemary water for hair and rose water for skin.</p>
+                    </div>
+                    <a href="#request-form" class="btn">Request Order</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="haircare" class="booking">
+            <h2>Schedule a Hair Style Appointment</h2>
+            <p style="margin-bottom: 2rem;">Welcome to our professional hair care haven, where growth begins anew. Let us guide you through the transformation journey.</p>
+            <div class="iframe-container">
+                <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1AFrLr7oASDMv2aOvfpd4F4BweMb_lx2UmyNUZ7fhG7_rTm8fgkPH6gMAmY5aD12jdnEfS2TL3?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+        </section>
+
+        <section id="request-form" class="contact-section">
+            <h2>Place an Order or Contact Us</h2>
+            <p>Fill out the form below to request a product or ask a question. We will reach out to you shortly to finalize your request!</p>
+            
+            <div class="form-container">
+                <form action="https://formsubmit.co/workorders@hpo.center" method="POST">
+                    
+                    <input type="hidden" name="_cc" value="support@rosemaryland.love">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://pufferfish-salamander-mzmh.squarespace.com/"> 
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Jane Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="jane@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interest">What are you interested in?</label>
+                        <select id="interest" name="interest" required>
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Product: Rose Water ($12.99)">Product: Rose Water ($12.99)</option>
+                            <option value="Product: Rosemary Water ($19.99)">Product: Rosemary Water ($19.99)</option>
+                            <option value="Product: Gift Card">Product: Gift Card</option>
+                            <option value="Hair Appointment Question">Hair Appointment Question</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message / Order Details</label>
+                        <textarea id="message" name="message" required placeholder="Let us know quantities or any questions you have..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">Submit Request</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 RoseMaryLand.Love. All rights reserved.</p>
+        <p>Created by HPO.Center | support@rosemaryland.love</p>
+    </footer>
+
+</body>
+</html>

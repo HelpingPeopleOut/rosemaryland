@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haircare Appointments | RoseMaryLand</title>
+    <meta name="description" content="Professional Hair Stylist in Pasadena and Victorville California. Haircuts are essential for maintaining healthy hair, trimming split ends, and promoting overall hair health.">
+    <style>
+        /* CSS Variables for a Premium Earthy Palette */
+        :root {
+            --primary-color: #556B2F; /* Rosemary Green */
+            --secondary-color: #E6C6CB; /* Rose Pink */
+            --text-dark: #333333;
+            --text-light: #F7F5F0; /* Off-white background */
+            --font-heading: 'Georgia', serif;
+            --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation */
+        header {
+            background-color: #fff;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #3e4f22;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 80px 5%;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--text-light) 100%);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Image & Info Section */
+        .info-section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .info-section img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            object-fit: cover;
+        }
+
+        .info-section h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .info-section p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        /* Booking Section */
+        .booking {
+            background-color: #fff;
+            padding: 80px 5%;
+            text-align: center;
+            border-top: 1px solid #eaeaea;
+        }
+
+        .booking h2 {
+            font-family: var(--font-heading);
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .booking p {
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .iframe-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: #fdfdfd;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: #fff;
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            .info-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">RoseMaryLand</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="appointments.html" class="active">Haircare</a></li>
+                <li><a href="index.html#request-form">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="#booking" class="btn">Book Now</a>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Revamp Your Look</h1>
+            <p>Professional Hair Stylist in Pasadena and Victorville, California.</p>
+        </section>
+
+        <section class="info-section">
+            <img src="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/1712216871447-0U9EUF1MJ7U19H6B49I1/image-asset.jpeg" alt="Professional Hair Styling Setup">
+            <h2>Experience the Magic of Hair Transformation</h2>
+            <p>Haircuts are essential for maintaining healthy hair. Trimming split ends and removing damaged sections prevent further breakage and promote overall hair health. This maintenance aspect ensures that the hair remains strong, vibrant, and manageable, which is crucial for everyday styling.</p>
+            <p>Indulge in our premium services tailored to your needs. Experience the magic of hair transformation with us, where every strand tells a story of beauty and rejuvenation.</p>
+        </section>
+
+        <section id="booking" class="booking">
+            <h2>Schedule Your Appointment</h2>
+            <p>Select a time that works best for you below. We look forward to helping you achieve your healthiest, most vibrant hair.</p>
+            
+            <div class="iframe-container">
+                <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1AFrLr7oASDMv2aOvfpd4F4BweMb_lx2UmyNUZ7fhG7_rTm8fgkPH6gMAmY5aD12jdnEfS2TL3?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 RoseMaryLand.Love. All rights reserved.</p>
+        <p>Created by HPO.Center | support@rosemaryland.love</p>
+    </footer>
+
+</body>
+</html>
