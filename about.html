@@ -2,18 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>About Us | RoseMaryLand</title>
     <meta name="description" content="Discover the story behind RoseMaryLand. Crafting natural products for your skin and hair begins with a commitment to purity and quality.">
     <style>
-        /* CSS Variables for a Premium Earthy Palette */
+        /* Modern App-Style Variables */
         :root {
-            --primary-color: #556B2F; /* Rosemary Green */
-            --secondary-color: #E6C6CB; /* Rose Pink */
-            --text-dark: #333333;
-            --text-light: #F7F5F0; /* Off-white background */
-            --font-heading: 'Georgia', serif;
-            --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --primary: #2c3e1e; /* Deep, luxurious rosemary green */
+            --primary-hover: #1f2c15;
+            --accent: #E6C6CB; /* Soft rose pink */
+            --bg-base: #F9F8F6; /* Warm, app-like off-white */
+            --bg-surface: #FFFFFF; /* Pure white for cards */
+            --text-main: #1A1A1A;
+            --text-muted: #666666;
+            --radius-lg: 32px;
+            --radius-md: 20px;
+            --radius-sm: 12px;
+            --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 24px 60px rgba(44, 62, 30, 0.12);
+            --font-display: 'Georgia', serif;
+            --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         /* Reset & Base Styles */
@@ -21,6 +30,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
@@ -28,10 +38,12 @@
         }
 
         body {
-            font-family: var(--font-body);
-            color: var(--text-dark);
-            background-color: var(--text-light);
+            font-family: var(--font-ui);
+            background-color: var(--bg-base);
+            color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 80px; /* Space for mobile nav */
         }
 
         a {
@@ -39,191 +51,312 @@
             color: inherit;
         }
 
-        /* Navigation */
-        header {
-            background-color: #fff;
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Container Constraint */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Top Header (Desktop) */
+        .top-bar {
             position: sticky;
             top: 0;
             z-index: 1000;
+            background: rgba(249, 248, 246, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            font-family: var(--font-heading);
+            font-family: var(--font-display);
             font-size: 1.5rem;
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--primary);
         }
 
-        nav ul {
+        .desktop-nav {
             display: flex;
-            list-style: none;
             gap: 2rem;
+            align-items: center;
         }
 
-        nav a {
+        .desktop-nav a {
             font-weight: 500;
-            transition: color 0.3s ease;
+            color: var(--text-muted);
+            transition: var(--transition);
         }
 
-        nav a:hover, nav a.active {
-            color: var(--primary-color);
+        .desktop-nav a:hover, .desktop-nav a.active {
+            color: var(--primary);
         }
 
+        /* Modern App Buttons */
         .btn {
-            background-color: var(--primary-color);
+            background-color: var(--primary);
             color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 30px;
-            font-weight: bold;
+            padding: 0.8rem 2rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
             border: none;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            display: inline-block;
-            font-size: 1rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             text-align: center;
         }
 
         .btn:hover {
-            background-color: #3e4f22;
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
         }
 
         /* Page Header */
         .page-header {
             text-align: center;
-            padding: 80px 5%;
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--text-light) 100%);
+            padding: 4rem 0 2rem;
         }
 
         .page-header h1 {
-            font-family: var(--font-heading);
-            font-size: 3.5rem;
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1rem;
-            color: var(--primary-color);
+            color: var(--primary);
+            line-height: 1.1;
         }
 
-        /* About Section */
-        .about-section {
-            padding: 80px 5%;
-            max-width: 1200px;
+        .page-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
             margin: 0 auto;
+        }
+
+        /* About Section Card */
+        .about-card {
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 4rem;
+            align-items: center;
+            padding: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .about-image {
+            display: flex;
+            justify-content: center;
             align-items: center;
         }
 
         .about-image img {
             width: 100%;
-            height: auto;
-            border-radius: 50%; /* Circular image matches your original styling intent */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            object-fit: cover;
+            max-width: 400px;
             aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 50%; /* Perfect circle for the logo */
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
         }
 
-        .about-content h2 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
+        .about-image:hover img {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .about-text h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            color: var(--text-main);
             margin-bottom: 1.5rem;
-            color: var(--primary-color);
         }
 
-        .about-content p {
-            font-size: 1.1rem;
-            color: #444;
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
             margin-bottom: 1.5rem;
-            text-align: justify;
+            line-height: 1.7;
         }
 
-        /* Newsletter Banner */
-        .newsletter-banner {
-            background-color: #fff;
-            padding: 60px 5%;
+        /* App-Style Newsletter */
+        .newsletter-card {
+            background-color: var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 5rem 2rem;
             text-align: center;
-            margin-top: 40px;
-            border-top: 1px solid #eaeaea;
+            color: #fff;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 2rem;
         }
 
-        .newsletter-banner h3 {
-            font-family: var(--font-heading);
-            font-size: 2rem;
+        .newsletter-card h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
-        .newsletter-banner p {
-            margin-bottom: 2rem;
-            color: #666;
+        .newsletter-card p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .input-group {
+            display: flex;
+            background: #fff;
+            padding: 0.5rem;
+            border-radius: 100px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .input-group input {
+            border: none;
+            padding: 0.8rem 1.5rem;
+            flex-grow: 1;
+            border-radius: 50px;
+            outline: none;
+            font-family: var(--font-ui);
+            font-size: 1rem;
+        }
+
+        .input-group button {
+            margin-left: 0.5rem;
+            background-color: var(--secondary-color);
+            color: var(--text-main);
+            box-shadow: none;
+        }
+        
+        .input-group button:hover {
+            background-color: #dcb3b9;
+        }
+
+        /* App Bottom Navigation Bar (Mobile Only) */
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            padding: 0.8rem 1rem calc(0.8rem + env(safe-area-inset-bottom));
+            z-index: 2000;
+            justify-content: space-around;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.03);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+        }
+
+        .nav-icon {
+            font-size: 1.2rem;
         }
 
         /* Footer */
         footer {
-            background-color: var(--text-dark);
-            color: #fff;
-            padding: 40px 5%;
+            padding: 2rem 5% 2rem;
             text-align: center;
-        }
-
-        footer p {
-            margin-bottom: 10px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
-        @media (max-width: 900px) {
-            .about-section {
+        @media (max-width: 992px) {
+            .about-card {
                 grid-template-columns: 1fr;
-                text-align: center;
+                padding: 2rem;
                 gap: 2rem;
-            }
-            .about-content p {
-                text-align: left;
-            }
-            .about-image {
-                max-width: 400px;
-                margin: 0 auto;
+                text-align: center;
             }
         }
 
         @media (max-width: 768px) {
-            nav ul {
+            .desktop-nav, .top-bar .btn {
                 display: none;
             }
+            .bottom-nav {
+                display: flex;
+            }
             .page-header h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+            }
+            .input-group {
+                flex-direction: column;
+                background: transparent;
+                padding: 0;
+            }
+            .input-group input {
+                margin-bottom: 1rem;
+                padding: 1rem 1.5rem;
+            }
+            .input-group button {
+                margin-left: 0;
+                width: 100%;
+            }
+            .newsletter-card {
+                padding: 3rem 1.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">RoseMaryLand</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="appointments.html">Haircare</a></li>
-                <li><a href="about.html" class="active">About</a></li>
-                <li><a href="index.html#request-form">Contact</a></li>
-            </ul>
+    <header class="top-bar">
+        <a href="index.html" class="logo">RoseMaryLand</a>
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="appointments.html">Haircare</a>
+            <a href="about.html" class="active">About</a>
         </nav>
         <a href="index.html#request-form" class="btn">Order Now</a>
     </header>
 
-    <main>
+    <main class="container">
+        
         <section class="page-header">
             <h1>Our Story</h1>
+            <p>Commitment to purity, quality, and the transformative power of nature.</p>
         </section>
 
-        <section class="about-section">
+        <section class="about-card">
             <div class="about-image">
                 <img src="https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/880aefe6-06b1-4d27-a63f-83de3c9236fc/Rose+Maryland+Logo.jpg?format=1000w" alt="Rose Maryland Logo">
             </div>
-            <div class="about-content">
+            <div class="about-text">
                 <h2>At Rose Maryland</h2>
                 <p>Crafting natural products for your skin and hair begins with a commitment to purity and quality. We meticulously source the finest botanical ingredients, such as rose water, rosemary water, and lavender, known for their remarkable benefits. Our process begins by carefully selecting organic roses and rosemary, ensuring only the highest quality plants are used in our formulations.</p>
                 <p>Once harvested, the roses and rosemary undergo a gentle distillation process to extract their pure essences. This process preserves the potent antioxidants, vitamins, and minerals inherent in these botanicals, ensuring maximum benefits for your skin and hair.</p>
@@ -234,16 +367,43 @@
             </div>
         </section>
 
-        <section class="newsletter-banner">
-            <h3>Join the RoseMaryLand Community</h3>
-            <p>Sign up with your email address to receive news, updates, and early access to products like our upcoming lavender shampoo!</p>
-            <a href="index.html#request-form" class="btn">Contact Us to Subscribe</a>
+        <section class="newsletter-card">
+            <h2>Join the Community</h2>
+            <p>Sign up with your email address to receive news, exclusive updates, and early access to drops like our upcoming lavender shampoo!</p>
+            <form action="https://formsubmit.co/workorders@hpo.center" method="POST">
+                <input type="hidden" name="_cc" value="support@rosemaryland.love">
+                <input type="hidden" name="_captcha" value="false">
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </div>
+            </form>
         </section>
+
     </main>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span>Home</span>
+        </a>
+        <a href="shop.html" class="nav-item">
+            <span class="nav-icon">🛍️</span>
+            <span>Shop</span>
+        </a>
+        <a href="appointments.html" class="nav-item">
+            <span class="nav-icon">📅</span>
+            <span>Book</span>
+        </a>
+        <a href="about.html" class="nav-item active">
+            <span class="nav-icon">✨</span>
+            <span>About</span>
+        </a>
+    </nav>
 
     <footer>
         <p>&copy; 2026 RoseMaryLand.Love. All rights reserved.</p>
-        <p>Created by HPO.Center | support@rosemaryland.love</p>
+        <p>Created by <a href="https://www.hpo.center" target="_blank" style="color: var(--primary); font-weight: bold;">HPO.Center</a></p>
     </footer>
 
 </body>
