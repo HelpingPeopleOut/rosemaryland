@@ -3,8 +3,8 @@
   "short_name": "RoseMaryLand",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F9F8F6",
-  "theme_color": "#556B2F",
+  "background_color": "#f8f5f1",
+  "theme_color": "#1e2f18",
   "icons": [
     {
       "src": "https://images.squarespace-cdn.com/content/v1/660b3da749af8d6bcb3556bf/880aefe6-06b1-4d27-a63f-83de3c9236fc/Rose+Maryland+Logo.jpg?format=1000w",
