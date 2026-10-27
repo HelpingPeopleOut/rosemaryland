@@ -9,6 +9,8 @@ type BaseProps = {
   className?: string;
   full?: boolean;
   arrow?: boolean;
+  /** Full-width on phones for stacked CTA groups */
+  stackMobile?: boolean;
 };
 
 type ButtonAsButton = BaseProps & {
@@ -31,12 +33,14 @@ export function Button(props: ButtonAsButton | ButtonAsLink) {
     className = "",
     full,
     arrow,
+    stackMobile,
   } = props;
 
   const classes = [
     "btn",
     `btn-${variant}`,
     full ? "btn-full" : "",
+    stackMobile ? "btn-stack-mobile" : "",
     className,
   ]
     .filter(Boolean)

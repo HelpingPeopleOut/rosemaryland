@@ -39,7 +39,7 @@ export function OrderForm() {
     <form
       action={`https://formsubmit.co/${SITE.email.orders}`}
       method="POST"
-      className="space-y-6"
+      className="space-y-5 sm:space-y-6"
     >
       <input type="hidden" name="_cc" value={SITE.email.support} />
       <input type="hidden" name="_captcha" value="false" />
@@ -88,7 +88,7 @@ export function OrderForm() {
       </div>
 
       <div>
-        <div className="mb-3 flex items-end justify-between gap-3">
+        <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
           <label className="label !mb-0">Select Products & Quantities</label>
           {itemCount > 0 ? (
             <span className="text-sm font-semibold text-rose tabular-nums">
@@ -97,7 +97,7 @@ export function OrderForm() {
           ) : null}
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2.5 sm:gap-3">
           {ORDERABLE.map((product) => {
             const count = qty[product.id] || 0;
             return (
@@ -113,11 +113,12 @@ export function OrderForm() {
                   height={64}
                   className="rounded-[14px] object-cover"
                 />
-                <div className="min-w-0">
-                  <h4 className="font-display text-base sm:text-lg text-ink truncate">
-                    {product.name}
+                <div className="order-row-info min-w-0">
+                  <h4 className="font-display text-[0.95rem] leading-snug text-ink sm:text-lg">
+                    <span className="sm:hidden">{product.shortName}</span>
+                    <span className="hidden sm:inline">{product.name}</span>
                   </h4>
-                  <p className="text-sm font-semibold text-forest">
+                  <p className="mt-0.5 text-sm font-semibold text-forest">
                     {product.originalPrice ? (
                       <>
                         <span className="mr-1.5 text-muted line-through font-medium text-xs">
@@ -197,7 +198,7 @@ export function OrderForm() {
           id="message"
           name="Message"
           rows={4}
-          className="field min-h-[120px] resize-y"
+          className="field min-h-[110px] resize-y sm:min-h-[120px]"
           placeholder="Gift card amounts, appointment questions, shipping details…"
         />
       </div>
@@ -220,7 +221,7 @@ export function OrderForm() {
       <Button type="submit" variant="primary" full arrow>
         Submit Request
       </Button>
-      <p className="text-center text-xs text-muted">
+      <p className="text-center text-xs text-muted px-2">
         We’ll email you immediately to fulfill your order or answer your inquiry.
       </p>
     </form>

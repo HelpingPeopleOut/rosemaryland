@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function ThankYouPage() {
   return (
     <SiteShell hideFooter>
-      <section className="flex flex-1 items-center justify-center px-[5%] py-16 md:py-24">
-        <div className="glass-strong relative w-full max-w-lg rounded-[2rem] px-6 py-12 sm:px-10 text-center border-t-4 border-t-rose/70 overflow-hidden">
+      <section className="page-x flex flex-1 items-center justify-center py-12 sm:py-16 md:py-24">
+        <div className="glass-strong relative w-full max-w-lg overflow-hidden rounded-[1.5rem] border-t-4 border-t-rose/70 px-5 py-10 text-center sm:rounded-[2rem] sm:px-10 sm:py-12">
           <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-rose-soft/50 blur-2xl pulse-glow" />
           <div className="pointer-events-none absolute -left-6 bottom-0 h-28 w-28 rounded-full bg-mist blur-2xl" />
 

@@ -18,10 +18,10 @@ export function NewsletterForm() {
           name="email"
           required
           placeholder="Enter your email address"
-          className="field sm:!border-0 sm:!bg-transparent sm:!shadow-none sm:focus:!shadow-none flex-1"
+          className="field flex-1 sm:!border-0 sm:!bg-transparent sm:!shadow-none sm:focus:!shadow-none"
           autoComplete="email"
         />
-        <Button type="submit" variant="rose" className="sm:!px-6 shrink-0">
+        <Button type="submit" variant="rose" className="w-full shrink-0 sm:w-auto sm:!px-6" stackMobile>
           Subscribe
         </Button>
       </div>

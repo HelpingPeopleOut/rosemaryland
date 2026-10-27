@@ -10,14 +10,29 @@ export type AccordionItem = {
 type Props = {
   items: readonly AccordionItem[];
   className?: string;
+  /** Open first item by default (default true) */
+  defaultOpen?: number | null;
+  /** Skip outer glass shell (for nested panels) */
+  plain?: boolean;
 };
 
-export function Accordion({ items, className = "" }: Props) {
+export function Accordion({
+  items,
+  className = "",
+  defaultOpen = 0,
+  plain = false,
+}: Props) {
   const baseId = useId();
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(defaultOpen);
 
   return (
-    <div className={`glass-strong rounded-[1.5rem] px-6 sm:px-8 ${className}`}>
+    <div
+      className={
+        plain
+          ? `border-t border-[rgba(30,47,24,0.08)] ${className}`
+          : `glass-strong rounded-[1.25rem] px-4 sm:rounded-[1.5rem] sm:px-6 md:px-8 ${className}`
+      }
+    >
       {items.map((item, i) => {
         const isOpen = open === i;
         const panelId = `${baseId}-panel-${i}`;
@@ -37,7 +52,7 @@ export function Accordion({ items, className = "" }: Props) {
               aria-controls={panelId}
               onClick={() => setOpen(isOpen ? null : i)}
             >
-              <span className="font-display text-lg sm:text-xl tracking-tight">
+              <span className="font-display text-base tracking-tight sm:text-lg md:text-xl">
                 {item.q}
               </span>
               <span className="accordion-icon" aria-hidden>
@@ -58,7 +73,7 @@ export function Accordion({ items, className = "" }: Props) {
               className="accordion-panel"
             >
               <div>
-                <p>{item.a}</p>
+                <p className="text-sm sm:text-base">{item.a}</p>
               </div>
             </div>
           </div>

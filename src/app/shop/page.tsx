@@ -14,17 +14,17 @@ export const metadata: Metadata = {
 export default function ShopPage() {
   return (
     <SiteShell>
-      <section className="relative overflow-hidden px-[5%] pt-16 pb-10 md:pt-24 md:pb-14">
-        <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-rose-soft/40 blur-3xl" />
+      <section className="page-x relative overflow-hidden pb-8 pt-12 sm:pb-10 sm:pt-16 md:pb-14 md:pt-24">
+        <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-[min(36rem,100%)] -translate-x-1/2 rounded-full bg-rose-soft/40 blur-3xl" />
         <Reveal>
           <div className="relative mx-auto max-w-3xl text-center">
-            <p className="font-display text-2xl sm:text-3xl text-rose mb-2 tracking-tight">
+            <p className="font-display mb-2 text-xl tracking-tight text-rose sm:text-2xl md:text-3xl">
               RoseMaryLand
             </p>
-            <h1 className="font-display text-[clamp(2.4rem,5vw,4rem)] text-forest tracking-tight leading-[1.08] mb-4">
+            <h1 className="font-display mb-3 text-[clamp(2rem,5vw,4rem)] leading-[1.08] tracking-tight text-forest sm:mb-4">
               Experience the Beauty of Botanicals
             </h1>
-            <p className="text-muted text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-muted sm:text-base md:text-lg">
               Natural hair and skincare solutions crafted with the finest
               ingredients. Unlock the power of nature with our premium products.
             </p>
@@ -32,8 +32,8 @@ export default function ShopPage() {
         </Reveal>
       </section>
 
-      <section className="mx-auto max-w-[1400px] px-[5%] pb-20 md:pb-28">
-        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+      <section className="page-x mx-auto max-w-[1400px] pb-16 sm:pb-20 md:pb-28">
+        <div className="grid auto-rows-fr gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3 xl:gap-8">
           {PRODUCTS.map((product, i) => (
             <Reveal
               key={product.id}
@@ -53,11 +53,11 @@ export default function ShopPage() {
         </div>
 
         <Reveal>
-          <div className="mt-16 glass-strong rounded-[2rem] px-6 py-10 sm:px-10 text-center max-w-2xl mx-auto">
-            <h2 className="font-display text-2xl sm:text-3xl text-forest mb-3 tracking-tight">
+          <div className="glass-strong mx-auto mt-12 max-w-2xl rounded-[1.5rem] px-5 py-8 text-center sm:mt-16 sm:rounded-[2rem] sm:px-10 sm:py-10">
+            <h2 className="font-display mb-3 text-2xl tracking-tight text-forest sm:text-3xl">
               Ready to order?
             </h2>
-            <p className="text-muted mb-6">
+            <p className="mb-6 text-sm text-muted sm:text-base">
               Select quantities with product images on our concierge order form—
               we’ll confirm everything by email.
             </p>

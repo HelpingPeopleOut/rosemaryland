@@ -162,11 +162,18 @@ img {
   cursor: pointer;
   overflow: hidden;
   isolation: isolate;
+  min-height: 2.75rem;
   transition:
     transform 0.35s var(--rm-ease),
     box-shadow 0.35s var(--rm-ease),
     background 0.35s var(--rm-ease),
     color 0.35s var(--rm-ease);
+}
+
+@media (max-width: 639px) {
+  .btn-stack-mobile {
+    width: 100%;
+  }
 }
 
 .btn:focus-visible {
@@ -311,14 +318,22 @@ img {
 }
 
 .stepper button {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border: none;
   background: transparent;
   color: var(--rm-forest);
   font-size: 1.15rem;
   cursor: pointer;
+  touch-action: manipulation;
   transition: background 0.25s var(--rm-ease);
+}
+
+@media (min-width: 640px) {
+  .stepper button {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
 }
 
 .stepper button:hover {
@@ -348,8 +363,8 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 1.25rem 0;
+  gap: 0.75rem;
+  padding: 1.05rem 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -358,6 +373,14 @@ img {
   font-weight: 600;
   color: var(--rm-forest);
   transition: color 0.25s var(--rm-ease);
+  min-height: 3rem;
+}
+
+@media (min-width: 640px) {
+  .accordion-trigger {
+    gap: 1rem;
+    padding: 1.25rem 0;
+  }
 }
 
 .accordion-trigger:hover {
@@ -462,10 +485,16 @@ img {
     border-color 0.45s var(--rm-ease);
 }
 
-.product-tile:hover {
-  transform: translateY(-6px);
-  border-color: rgba(183, 110, 121, 0.3);
-  box-shadow: var(--rm-shadow-lift);
+@media (hover: hover) and (pointer: fine) {
+  .product-tile:hover {
+    transform: translateY(-6px);
+    border-color: rgba(183, 110, 121, 0.3);
+    box-shadow: var(--rm-shadow-lift);
+  }
+
+  .product-tile:hover img {
+    transform: scale(1.04);
+  }
 }
 
 .product-tile img {
@@ -475,17 +504,14 @@ img {
   transition: transform 0.7s var(--rm-ease);
 }
 
-.product-tile:hover img {
-  transform: scale(1.04);
-}
 
 /* ——— Order row ——— */
 .order-row {
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 1rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.75rem;
   align-items: center;
-  padding: 0.85rem;
+  padding: 0.75rem;
   border-radius: var(--rm-radius-lg);
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(30, 47, 24, 0.07);
@@ -493,6 +519,38 @@ img {
     border-color 0.3s var(--rm-ease),
     background 0.3s var(--rm-ease),
     box-shadow 0.3s var(--rm-ease);
+}
+
+@media (max-width: 419px) {
+  .order-row {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "thumb info"
+      "stepper stepper";
+    gap: 0.65rem 0.75rem;
+  }
+
+  .order-row > img {
+    grid-area: thumb;
+  }
+
+  .order-row > .order-row-info {
+    grid-area: info;
+  }
+
+  .order-row > .stepper {
+    grid-area: stepper;
+    justify-self: stretch;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 640px) {
+  .order-row {
+    gap: 1rem;
+    padding: 0.85rem;
+  }
 }
 
 .order-row:hover,
@@ -503,10 +561,19 @@ img {
 }
 
 .order-row img {
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
   object-fit: cover;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .order-row img {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+  }
 }
 
 /* ——— Checkbox ——— */
@@ -572,13 +639,69 @@ img {
   animation: pulse-glow 4s ease-in-out infinite;
 }
 
-/* Mobile bottom safe area */
-.pb-nav {
-  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+/* Page gutters — tighter on phones, airy on desktop */
+.page-x {
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
+
+@media (min-width: 480px) {
+  .page-x {
+    padding-left: max(1.25rem, 4vw);
+    padding-right: max(1.25rem, 4vw);
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-x {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+.section-y {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
 }
 
 @media (min-width: 768px) {
+  .section-y {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-y {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+/* Mobile / tablet bottom safe area (bottom nav until lg) */
+.pb-nav {
+  padding-bottom: calc(5.75rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 1024px) {
   .pb-nav {
     padding-bottom: 0;
+  }
+}
+
+/* Calendar embed scales by viewport */
+.booking-frame {
+  width: 100%;
+  border: 0;
+  min-height: 480px;
+  height: 70vh;
+  max-height: 720px;
+}
+
+@media (min-width: 768px) {
+  .booking-frame {
+    min-height: 560px;
+    height: 650px;
+    max-height: none;
   }
 }

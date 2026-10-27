@@ -87,7 +87,7 @@ export function BottomNav() {
 
   return (
     <nav
-      className="glass-strong fixed bottom-0 left-0 z-[60] flex w-full justify-around border-t border-[rgba(30,47,24,0.08)] px-2 pt-2 pb-[calc(0.55rem+env(safe-area-inset-bottom))] shadow-[0_-12px_40px_rgba(30,47,24,0.08)] md:hidden"
+      className="glass-strong fixed bottom-0 left-0 z-[60] flex w-full justify-around border-t border-[rgba(30,47,24,0.08)] px-1 pt-1.5 pb-[calc(0.55rem+env(safe-area-inset-bottom))] shadow-[0_-12px_40px_rgba(30,47,24,0.08)] lg:hidden"
       aria-label="Mobile"
     >
       {ITEMS.map((item) => {
@@ -96,7 +96,7 @@ export function BottomNav() {
           <Link
             key={item.href}
             href={item.href}
-            className={`flex min-w-[4.5rem] flex-col items-center gap-0.5 rounded-2xl px-3 py-1.5 text-[0.7rem] font-medium transition-colors ${
+            className={`flex min-h-[3rem] min-w-[4.25rem] flex-1 flex-col items-center justify-center gap-0.5 rounded-2xl px-2 py-1 text-[0.68rem] font-medium transition-colors sm:min-w-[4.5rem] sm:text-[0.7rem] ${
               active ? "text-forest bg-mist/70" : "text-muted"
             }`}
           >
