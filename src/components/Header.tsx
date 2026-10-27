@@ -18,7 +18,7 @@ export function Header({ ctaHref = "/#order", ctaLabel = "Order Now" }: {
   };
 
   return (
-    <header className="sticky top-0 z-50 glass-strong border-b border-[rgba(30,47,24,0.06)]">
+    <header className="sticky top-0 z-50 glass-strong border-b border-[rgba(30,47,24,0.08)] supports-[backdrop-filter]:bg-[rgba(255,252,249,0.72)]">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-[5%] py-3.5">
         <Link
           href="/"
